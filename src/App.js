@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./components/Header";
+import "./App.css";
+import { CartCard } from "./components/CartCard";
+import {useCart} from "./contexts/CartContext"
 
-function App() {
+export default function App() {
+  const {cartItem, total} = useCart();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <div className="main">
+        <h1>YOUR BAG</h1>
+        <div>
+          {
+            cartItem.map((item)=>(
+              <CartCard key={item.id} item={item}/>
+            ))
+          }
+        </div>
+        <div className="total">
+          <p>Total</p>
+          <p className="totalprice">${total}</p>
+        </div>
+        <button>Clear Cart</button>
+      </div>
     </div>
   );
 }
-
-export default App;
