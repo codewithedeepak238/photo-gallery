@@ -10,5 +10,7 @@ export const CartReducer = (state, action)=>{
             return {cartItem: payload.cartItem, total: payload.total}
         case "CLEARCART":
             return {cartItem: [], total: 0}
+        default:
+            return "ERROR"
     }
 }

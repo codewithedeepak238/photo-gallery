@@ -4,7 +4,7 @@ import { CartCard } from "./components/CartCard";
 import {useCart} from "./contexts/CartContext"
 
 export default function App() {
-  const {cartItem, total} = useCart();
+  const {cartItem, total, clearCart} = useCart();
   return (
     <div className="App">
       <Header/>
@@ -21,7 +21,9 @@ export default function App() {
           <p>Total</p>
           <p className="totalprice">${total}</p>
         </div>
-        <button>Clear Cart</button>
+        <div className="footer">
+          <button onClick={clearCart}>Clear Cart</button>
+        </div>
       </div>
     </div>
   );
