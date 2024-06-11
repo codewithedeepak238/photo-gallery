@@ -7,14 +7,16 @@ export const TaskCard = ({task, tasks, setTasks}) => {
       }
       return task;
     })
+    localStorage.setItem("tasks",JSON.stringify(newTask));
     setTasks(newTask);
   }
   function handleRemove(id){
     const newTask = tasks.filter((task)=>task.id!==id);
+    localStorage.setItem("tasks",JSON.stringify(newTask));
     setTasks(newTask);
   }
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center py-[5px]">
       <div className="flex items-center gap-[10px]">
         <input type="checkbox" onChange={()=>handleComplete(task.id)}/>
         <p className={task.complete?"line-through":""}>{task.taskName}</p>

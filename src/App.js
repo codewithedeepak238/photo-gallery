@@ -3,7 +3,8 @@ import "./App.css";
 import { useState } from "react";
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
+  const initialTask = JSON.parse(localStorage.getItem("tasks"));
+  const [tasks, setTasks] = useState(initialTask?initialTask:[]);
   function handleAdd(e){
     e.preventDefault();
     const task = {
@@ -11,8 +12,10 @@ export default function App() {
       taskName : e.target.input.value,
       complete : false
     }
-    e.target.input.value = ""
-    setTasks([...tasks, task])
+    e.target.input.value = "";
+    const newTasks = [...tasks, task];
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   }
   return (
     <div className="App flex item-center justify-center">
