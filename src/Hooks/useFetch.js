@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch(URL, query, page){
+export default function useFetch(apiPath, query, page){
     const [imageList, setList] = useState([]);
-    const url = `${URL}?${query?`query=${query}&`:""}${page?`page=${page}&`:""}per_page=30&client_id=${process.env.REACT_APP_API_KEY}`;
-    console.log(url);
+    const url = `${apiPath}?${query?`query=${query}&`:""}${page?`page=${page}&`:""}per_page=30&client_id=${process.env.REACT_APP_API_KEY}`;
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(url)
@@ -12,6 +11,6 @@ export default function useFetch(URL, query, page){
             setList(data);
         }
         fetchData();
-    }, [URL, query]);
+    }, [apiPath, query, url]);
     return {imageList}
 }

@@ -4,7 +4,7 @@ import useFetch from "../Hooks/useFetch"
 
 export const Hero = () => {
     const {imageList} = useFetch('https://api.unsplash.com/photos/', "", 2);
-    // console.log(imageList)
+
     return (
         <div className="mt-[2%]">
             <div className="gallery px-[2%]">
