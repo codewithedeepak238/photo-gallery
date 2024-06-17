@@ -8,9 +8,14 @@ export default function useFetch(apiPath, query, page){
             const res = await fetch(url)
             const data = await res.json();
             console.log(data)
-            setList((prev)=> [...prev, ...data]);
+            if(query){
+                setList(data);
+            }else{
+                setList((prev)=> [...prev, ...data]);
+            }
         }
         fetchData();
     }, [apiPath, query, url, page]);
+    console.log(imageList)
     return {imageList}
 }
