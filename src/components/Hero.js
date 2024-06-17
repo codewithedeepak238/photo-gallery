@@ -22,7 +22,7 @@ export const Hero = () => {
 }
 useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-}, [])
+})
 const { imageList } = useFetch('https://api.unsplash.com/photos/', "", page);
 
 return (
