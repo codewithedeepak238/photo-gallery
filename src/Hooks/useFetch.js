@@ -7,15 +7,16 @@ export default function useFetch(apiPath, query, page){
         async function fetchData() {
             const res = await fetch(url)
             const data = await res.json();
-            console.log(data)
             if(query){
-                setList(data);
+                setList([]);
+                setList(data.results);
+                setList((prev)=> [...prev, ...imageList]);
             }else{
                 setList((prev)=> [...prev, ...data]);
+                console.log(imageList)
             }
         }
         fetchData();
     }, [apiPath, query, url, page]);
-    console.log(imageList)
     return {imageList}
 }

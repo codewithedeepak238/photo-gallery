@@ -8,7 +8,7 @@ const ApiContext = createContext(initialList);
 export const ApiProvider = ({children})=>{
     const [page, setPage] = useState(1);
     const [query, setQuery] = useState("");
-    const {imageList} = useFetch('https://api.unsplash.com/photos/', query, page);
+    const {imageList} = useFetch(`https://api.unsplash.com/${query?'search/':""}photos/`, query, page);
     const value = {
         page,
         query,

@@ -28,7 +28,7 @@ return (
             <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
                 <Masonry columnsCount={4} gutter="10px">
                     {value.imageList && value.imageList.map((item, i) => (
-                        <ImageCard image={item.urls.regular} key={i} />
+                        <ImageCard image={item} key={i} />
                     ))}
                 </Masonry>
             </ResponsiveMasonry>
