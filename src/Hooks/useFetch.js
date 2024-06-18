@@ -10,10 +10,9 @@ export default function useFetch(apiPath, query, page){
             if(query){
                 setList([]);
                 setList(data.results);
-                setList((prev)=> [...prev, ...imageList]);
+                setList((prev)=> [...prev, ...data]);
             }else{
                 setList((prev)=> [...prev, ...data]);
-                console.log(imageList)
             }
         }
         fetchData();
